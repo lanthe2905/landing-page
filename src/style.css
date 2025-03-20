@@ -138,13 +138,6 @@ select {
   }
 }
 
-@media (min-width: 50em) {
-  .even-columns {
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
-  }
-}
-
 body {
   font-size: var(--fs-body);
   font-family: var(--ff-body);
@@ -273,6 +266,29 @@ body {
   }
 }
 
+.cta {
+  position: relative;
+  isolation: isolate;
+  text-align: center;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  background-image: url('/images/bg-tablet-pattern.svg'), url('/images/bg-tablet-pattern.svg');
+  background-repeat: no-repeat;
+  background-position: -20rem -5rem, 80rem -42rem;
+  inset: 0;
+  opacity: .1;
+}
+
+@media (min-width: 50em) {
+  .cta {
+    text-align: left;
+  }
+}
+
 .mobile-nav-toggle .icon-close {
   display: none;
 }
@@ -288,14 +304,35 @@ body {
   padding: var(--padding);
 }
 
+.even-columns {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 50em) {
+  .even-columns {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+}
+
+.justify-self-end {
+  justify-self: end;
+}
+
+@media (min-width: 50em) {
+  .justify-self-end-md {
+    justify-self: center;
+  }
+}
+
 :where(.flow :not(:first-child)) {
   margin-top: var(--flow-spacer, 3em);
   /* outline: 3px solid lime; */
 }
 
-.even-columns {
-  display: grid;
-  gap: 1rem;
+.vertical-align-center {
+  align-items: center;
 }
 
 .visually-hidden {
